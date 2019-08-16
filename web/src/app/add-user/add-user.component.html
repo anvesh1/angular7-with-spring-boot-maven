@@ -1,0 +1,69 @@
+<div class="wrapper">
+
+  <app-header></app-header>
+
+  <app-sidebar></app-sidebar>
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1 style="display:inline;">
+        Add User
+      </h1>
+      
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-body table-responsive">
+                <div class="col-md-12" style="margin-bottom:10px;">
+                  &nbsp;
+                </div>
+                <div class="col-md-6">
+                  <form [formGroup]="addUserForm"  (ngSubmit)="addUser()"  method="post">
+                  
+                    <div class="form-group">
+                        <input formControlName="firstName" type="text" class="form-control" placeholder="First Name*" minlength="5">
+                        <div *ngIf="addUserForm.controls['firstName'].errors && !addUserForm.controls['firstName'].pristine">
+                          <div [hidden]="!addUserForm.controls['firstName'].errors.required" class="text-danger"> First name required.</div>
+                          <div [hidden]="!addUserForm.controls['firstName'].errors.minlength" class="text-danger"> First name nust be at least 5 char.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name*">
+                        <div *ngIf="addUserForm.controls['lastName'].errors && !addUserForm.controls['lastName'].pristine">
+                          <div [hidden]="!addUserForm.controls['lastName'].errors.required" class="text-danger"> Last name required.</div>
+                          <!-- <div [hidden]="!addUserForm.controls['lastName'].errors.minlength" class="text-danger">Last name must be at least 5 char.</div> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="emailId"  type="email" class="form-control" placeholder="Email Id*" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                        <div *ngIf="addUserForm.controls['emailId'].errors && !addUserForm.controls['emailId'].pristine">
+                          <div [hidden]="!addUserForm.controls['emailId'].errors.required" class="text-danger"> Email id required.</div>
+                          <div [hidden]="!addUserForm.controls['emailId'].errors.pattern" class="text-danger">Please provide valid email id.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <input formControlName="contactNo"  type="text" class="form-control" placeholder="Contact No*" pattern="[0-9]{10}">
+                      <div *ngIf="addUserForm.controls['contactNo'].errors && !addUserForm.controls['contactNo'].pristine">
+                        <div [hidden]="!addUserForm.controls['contactNo'].errors.required" class="text-danger"> Contact no. required.</div>
+                        <div [hidden]="!addUserForm.controls['contactNo'].errors.pattern" class="text-danger">Contact No. Must be 10 digit.</div>
+                      </div>
+                  </div>   
+                   
+                    <div class="form-group">
+                        <button class="btn btn-success" id="addUserButton" [disabled]="!addUserForm.valid">Add User
+                          <i class="fa fa-spinner fa-1x" *ngIf="spinLoader"></i></button>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+  <app-footer></app-footer>
+</div>

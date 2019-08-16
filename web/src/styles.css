@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.css';*/
+
+.map-content .container{
+    width : 100% !important;
+}
+
+
+.swal2-popup { font-size: 1.6rem !important; }
+
+.content {
+    min-height: 250px;
+    padding-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.search_div{
+    margin-bottom: 10px;
+    margin-left: 12px;
+}
+.search_div button{
+    height: 34px !important;
+    margin-left: 3px
+}
+.box-body b{
+    margin-right:-40px;
+}

@@ -1,0 +1,228 @@
+.content {
+    min-height: 250px;
+    padding-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+/*.box-footer {*/
+/*padding: 5px;*/
+/*}*/
+/*.box {*/
+/*margin-bottom: -10px;*/
+/*}*/
+
+.totalCount{
+    background-color:red;
+    color:white;
+}
+.box-full-info{
+    height:252px;
+}
+.box-full-info > .box-body{
+    height: 85px;
+}
+.selBtn{
+    background-color: #2576BB;
+    color: white;
+    border-radius: 15px;
+    font-size: 14px;
+    outline: none;
+    padding: 3px 16px;
+}
+.box-body{
+    border: none;
+}
+
+
+.box-footer-stepy{
+
+    /*position: absolute;*/
+    position: absolute;
+    text-align: center;
+    bottom: 10%;
+    left: 31%;
+
+}
+
+.box-footer-stepy-disable{
+
+    /*position: absolute;*/
+    position: absolute;
+    text-align: center;
+    bottom: 10%;
+    left: 37%;
+
+}
+
+.next-button{
+    padding: 5px 15px;
+    font-size: 16px;
+    background-color: #009050;
+}
+.back-button{
+    padding: 5px 15px;
+    font-size: 16px;
+}
+
+.active-stepy{
+    background-color: #133962 !important;
+}
+
+.disable-stepy{
+    background-color: #cecbcb !important;
+}
+
+.active-stepy-text{
+    color: #133962 !important;
+}
+
+.disable-stepy-text{
+    color: #cecbcb !important;
+}
+.img-active{
+    border:1px solid #296099;
+    box-shadow: 0px 0px 7px 2px #296099;
+}
+.container {
+    display: block;
+    position: relative;
+    padding-left: 10px;
+
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight:560;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: relative;
+    top: 0;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border:1px solid black;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ffffff;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: white;
+    border:1px solid black;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 7px;
+    height: 14px;
+    border: solid #073863;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.heading{
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.selected-box-shadow{
+    box-shadow: 0 0 5px 3px #999;
+    border: 2px solid #59A3D1;
+}
+
+.selected-text{
+    color: #59A3D1;
+    font-weight: 500;
+}
+
+.nonselected-text{
+    color: #555;
+    font-weight: 500;
+}
+
+.stepy-title{
+    /*margin-left: -25px;*/
+    font-size: 18px;
+}
+.adj-i{
+    position: relative;
+    top:0px;
+    right:10px;
+    font-size: 24px;
+    color: #296099;
+}
+.adj-text2{
+    width: 85px;
+    position: absolute;
+    right: 3%;
+    top: 7%;
+}
+
+.sub-title-stepy{
+    color:#333;
+    margin-top: 10px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.disable-option{
+    cursor: not-allowed; 
+}
+.radio-active{
+    background-color: #073863;color: #ffffff;
+}
+
+.childLabel{
+    text-align: left;
+}
+.thumbnail_div{
+    padding:2%;
+    padding-bottom: 0%;
+    padding-top: 0px;
+    cursor: pointer;
+}
+.thumbnail_div i{
+    margin-top: 20px;
+    font-size: 65px;
+}
+.thumbnail_div a{
+    margin-top: 20px;
+    
+}
+.divbody{
+    background-color:#f0f4f4;
+    width:90%;
+    height: 215px;
+}

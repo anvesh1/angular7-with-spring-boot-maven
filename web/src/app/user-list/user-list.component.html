@@ -1,0 +1,193 @@
+<div class="wrapper">
+
+  <app-header></app-header>
+
+  <app-sidebar></app-sidebar>
+
+  <div class="content-wrapper" style="min-height: 720px;" [hidden]="isEditRequest" >
+    <section class="content-header">
+      <h1 style="display:inline;">
+        User List
+        <br><small></small>
+      </h1>
+      <!-- <button [routerLink]="['/emp-details']" class="btn btn-info pull-right" style="margin-top:-20px;">+ Create Employee</button> -->
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-body table-responsive">
+
+                <div class="col-md-12" style="margin-bottom:10px;">
+                  <!--
+                  <div class=" col-md-6 input-group input-group-sm pull-left" style="margin-left:15px;">
+                    <input type="text" class="form-control pull-right" placeholder="Search By Employee Name"  [(ngModel)]="searchFields['first_name']" style="height: 33px;"name="searchFields">
+                    <div class="input-group-btn">
+                      <button class="btn btn-success btn-flat" style="height: 34px !important;margin-left: 3px" title="search" (click)="getSearchRequest()">
+                        <i class="fa fa-search"></i></button>
+                      <button class="btn btn-primary btn-flat" style="height: 34px !important;margin-left: 3px" title="reset" (click)="resetSearchField()">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-md-1" ><i class="fa fa-spinner fa-spin fa-2x" *ngIf="spinLoader.filter"></i></div>
+                  -->
+                  <div class=" col-md-6">&nbsp;</div>
+                  <div class=" col-md-1">&nbsp;</div>
+
+                  <div class="col-md-3 total-record" *ngIf="totaluser">
+                    <b>Total: <span class="total-user-count">{{totaluser}}</span></b>
+                  </div>
+                  <div class="col-md-2 pull-right">
+                    <div class="pull-right" style="margin-right: 10px;" *ngIf="isOnePage">
+                      <table class="">
+                        <colgroup>
+                          <col style="width: 45%;">
+                        </colgroup>
+                        <tbody><tr>
+                          <td>
+                            <a class="btn-color pointer" (click)="previousPage()">
+                              <i class="fa fa-backward" title="Previous"></i>
+                            </a>
+                            <span style="margin-left: 25% ! important;"></span>
+                            <a class="btn-color pointer">
+                              <i class="fa fa-forward" title="Next" (click)="nextPage()"></i>
+                            </a>
+                          </td>
+                          <td>
+                            <select class="form-control"
+                                    id="pagination"
+                                    name="pagination"
+                                    [(ngModel)]="currentPage"
+                                    (change)="changePage()">
+                              <option *ngFor="let item of pages" [value]="item">{{item}}</option>
+                            </select>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12" style="margin-bottom:10px;">
+                  <div class=" col-md-6">&nbsp;</div>
+                  <div class=" col-md-2">&nbsp;</div>
+
+                  <!-- <div class="col-md-3 total-record"><b>Total: {{listData.length}}</b></div> -->
+                </div>
+
+                <table class="table table-hover">
+                  <tr>
+                    <th *ngFor = "let field of fields;index as i" [ngStyle]="{'width':field.width}">
+                      <span *ngIf="field.sort">{{field.title}}</span> &nbsp;
+                      <a class="pointer" *ngIf="field.sort">
+                        <i class="fa fa-sort" id="fa-{{field.field}}" (click)="sortBy(field.field, $event)"></i>
+                      </a>
+                      <span *ngIf="!field.sort">{{field.title}}</span>
+                    </th>
+                    <th>
+                      Action
+                    </th>
+                  </tr>
+                  <ng-template ngFor let-i="index" let-userData [ngForOf]="listData" >
+                    <tr>
+                      <td>&nbsp;&nbsp;<span >{{userData['firstName']}}</span></td>
+                      <td>&nbsp;&nbsp;<span >{{userData['lastName']}}</span></td>
+                      <td>&nbsp;&nbsp;<span>{{userData['emailId']}}</span></td>
+                      <td>&nbsp;&nbsp;<span>{{userData['contactNo']}}</span></td>
+                      <td>
+                        <button class="btn btn-primary btn-sm" (click)="editUser(i)" title="Edit">
+                          <i class="fa fa-edit"></i>
+                        </button>&nbsp;
+
+                        <button class="btn btn-danger btn-sm" (click)="deleteUser(userData['id'])" title="Delete">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                        <i *ngIf="spinLoader.delete[userData['id']]" class="fa fa-spinner fa-spin fa-1x"></i>
+                      </td>
+                    </tr>
+                  </ng-template>
+                  <tr *ngIf="!isListData">
+                    <td colspan="6" style="text-align: center">
+                      <i class="fa fa-spinner fa-spin fa-2x" ></i>
+                    </td>
+                  </tr>
+                  <tr *ngIf="!listData.length">
+                    <td colspan="5" align="center">{{message}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  
+  <div class="content-wrapper" style="min-height: 720px;" [hidden]="!isEditRequest">
+    <section class="content-header">
+      <h1 style="display:inline;">
+        Update User
+      </h1>
+      
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-body table-responsive">
+                <div class="col-md-12" style="margin-bottom:10px;">
+                  &nbsp;
+                </div>
+                <div class="col-md-6">
+                  <form [formGroup]="editUserForm"  (ngSubmit)="updateUser()"  method="post">
+                  
+                    <div class="form-group">
+                        <input formControlName="firstName" type="text" class="form-control" placeholder="First Name*" minlength="5">
+                        <div *ngIf="editUserForm.controls['firstName'].errors && !editUserForm.controls['firstName'].pristine">
+                          <div [hidden]="!editUserForm.controls['firstName'].errors.required" class="text-danger"> First name required.</div>
+                          <div [hidden]="!editUserForm.controls['firstName'].errors.minlength" class="text-danger"> First name nust be at least 5 char.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name*">
+                        <div *ngIf="editUserForm.controls['lastName'].errors && !editUserForm.controls['lastName'].pristine">
+                          <div [hidden]="!editUserForm.controls['lastName'].errors.required" class="text-danger"> Last name required.</div>
+                          <!-- <div [hidden]="!editUserForm.controls['lastName'].errors.minlength" class="text-danger">Last name must be at least 5 char.</div> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="emailId"  type="email" class="form-control" placeholder="Email Id*" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                        <div *ngIf="editUserForm.controls['emailId'].errors && !editUserForm.controls['emailId'].pristine">
+                          <div [hidden]="!editUserForm.controls['emailId'].errors.required" class="text-danger"> Email id required.</div>
+                          <div [hidden]="!editUserForm.controls['emailId'].errors.pattern" class="text-danger">Please provide valid email id.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <input formControlName="contactNo"  type="text" class="form-control" placeholder="Contact No*" pattern="[0-9]{10}">
+                      <div *ngIf="editUserForm.controls['contactNo'].errors && !editUserForm.controls['contactNo'].pristine">
+                        <div [hidden]="!editUserForm.controls['contactNo'].errors.required" class="text-danger"> Contact no. required.</div>
+                        <div [hidden]="!editUserForm.controls['contactNo'].errors.pattern" class="text-danger">Contact No. Must be 10 digit.</div>
+                      </div>
+                  </div>   
+                   
+                    <div class="form-group">
+                        <button class="btn btn-success" [disabled]="!editUserForm.valid">Update User
+                          <i class="fa fa-spinner fa-1x" *ngIf="editSpinLoader"></i></button>
+
+                          &nbsp;&nbsp;<a class="btn btn-primary" (click)="enableUserList()">Back</a>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+  
+  <app-footer></app-footer>
+</div>

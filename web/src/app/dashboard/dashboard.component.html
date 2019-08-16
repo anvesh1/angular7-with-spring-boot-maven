@@ -1,0 +1,138 @@
+<div class="wrapper">
+
+  <app-header></app-header>
+
+  <app-sidebar></app-sidebar>
+
+  <div class="content-wrapper" style="min-height: 720px;">
+    <section class="content-header">
+      <h1>
+        Client A: Dashboard
+        <br><small>Please make a selection below to view Client details.</small>
+      </h1>
+      <!--<ol class="breadcrumb">
+          &lt;!&ndash;<li><a href="#"><i class="fa fa-table"></i> Dashboard</a></li>&ndash;&gt;
+          <li class="active"><i class="fa fa-table"></i>&nbsp;Dashboard</li>
+      </ol>-->
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-body">
+
+                <div class="col-md-12">
+                  <a [routerLink]="['/clients']" class="btn btn-default" style="margin-left:20px;"><i class="fa fa-arrow-left"></i> Back</a>
+                </div>
+
+                <div style="margin-top: 15px;" class="col-md-12 thumbnail_div">
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 " (click)="setCss(1)">
+                    <div [ngClass]="{'selected-box-shadow':activeCat[1]}" class="box topic-box box-full-info divbody" id="div1" >
+                      <div class="box-header" style="text-align: center;">
+                        <div class="col-md-12">
+                            <i class="fa fa-handshake-o" aria-hidden="false"></i>
+                          </div>
+                        <div class="col-md-12 " style="font-size: 18px;">
+                          <h5 class="box-title" [ngClass]="{'selected-text':activeCat[1]}" style="margin-top: 5%; font-size: 17px;">Orders</h5>
+                        </div>
+                        <div [ngClass]="{'box-footer-stepy-disable':0}">
+                          <a [routerLink]="['/client-orders-list']" [queryParams]="{cid:cid}" *ngIf="activeCat[1]" type="button" [ngClass]="{'disabled': !activeCat[1],'btn btn-round btn-sm selBtn':1}">SELECT</a>
+                          <a style="color: #555; font-size: 13px;" *ngIf="!activeCat[1]" [ngClass]="{'disabled': !activeCat[1]}">SELECT</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 " (click)="setCss(2)">
+                      <div [ngClass]="{'selected-box-shadow':activeCat[2]}" class="box topic-box box-full-info divbody" id="div2" >
+                        <div class="box-header" style="text-align: center;">
+                          <div class="col-md-12">
+                              <i class="fa fa-tasks" aria-hidden="false"></i>
+                          </div>
+                          <div class="col-md-12 " style="font-size: 18px;">
+                            <h5 class="box-title" [ngClass]="{'selected-text':activeCat[2]}" style="margin-top: 5%; font-size: 17px;">Loadsheets</h5>
+                          </div>
+                          <div [ngClass]="{'box-footer-stepy-disable':0}">
+                              <a [routerLink]="['/client-loadsheets']" [queryParams]="{cid:cid}" *ngIf="activeCat[2]" type="button" [ngClass]="{'disabled': !activeCat[2],'btn btn-round btn-sm selBtn':1}">SELECT</a>
+                            <a style="color: #555; font-size: 13px;" *ngIf="!activeCat[2]" [ngClass]="{'disabled': !activeCat[2]}">SELECT</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 " (click)="setCss(3)">
+                      <div [ngClass]="{'selected-box-shadow':activeCat[3]}" class="box topic-box box-full-info divbody" id="div3" >
+                        <div class="box-header" style="text-align: center;">
+                          <div class="col-md-12">
+                              <i class="fa fa-cart-plus" aria-hidden="false"></i>
+                          </div>
+                          <div class="col-md-12 " style="font-size: 18px;">
+                            <h5 class="box-title" [ngClass]="{'selected-text':activeCat[3]}" style="margin-top: 5%; font-size: 17px;">Deliveries</h5>
+                          </div>
+                          <div [ngClass]="{'box-footer-stepy-disable':0}">
+                            <a [routerLink]="['/client-delivery-list']"  [queryParams]="{cid:cid}" *ngIf="activeCat[3]" type="button" [ngClass]="{'disabled': !activeCat[3],'btn btn-round btn-sm selBtn':1}">SELECT</a>
+                            <a style="color: #555; font-size: 13px;" *ngIf="!activeCat[3]" [ngClass]="{'disabled': !activeCat[3]}">SELECT</a>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 " (click)="setCss(4)">
+                      <div [ngClass]="{'selected-box-shadow':activeCat[4]}" class="box topic-box box-full-info divbody" id="div4" >
+                        <div class="box-header" style="text-align: center;">
+                          <div class="col-md-12">
+                              <i class="fa fa-undo" aria-hidden="false"></i>
+                          </div>
+                          <div class="col-md-12 " style="font-size: 18px;">
+                            <h5 class="box-title" [ngClass]="{'selected-text':activeCat[4]}" style="margin-top: 5%; font-size: 17px;">Back Orders</h5>
+                          </div>
+                          <div [ngClass]="{'box-footer-stepy-disable':0}">
+                            <a [routerLink]="['/client-backorder']"  [queryParams]="{cid:cid}" *ngIf="activeCat[4]" type="button" [ngClass]="{'disabled': !activeCat[4],'btn btn-round btn-sm selBtn':1}">SELECT</a>
+                            <a style="color: #555; font-size: 13px;" *ngIf="!activeCat[4]" [ngClass]="{'disabled': !activeCat[4]}">SELECT</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  <!-- <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 " (click)="setCss(5)">
+                      <div [ngClass]="{'selected-box-shadow':activeCat[5]}" class="box topic-box box-full-info divbody" id="div5" >
+                        <div class="box-header" style="text-align: center;">
+                          <div class="col-md-12">
+                              <i class="fa fa-hourglass-2" aria-hidden="false"></i>
+                          </div>
+                          <div class="col-md-12 " style="font-size: 18px;">
+                            <h5 class="box-title" [ngClass]="{'selected-text':activeCat[5]}" style="margin-top: 5%; font-size: 17px;">Schedules</h5>
+                          </div>
+                          <div [ngClass]="{'box-footer-stepy-disable':0}">
+                            <a [routerLink]="['/client-orders']" *ngIf="activeCat[5]" type="button" [ngClass]="{'disabled': !activeCat[5],'btn btn-round btn-sm selBtn':1}">SELECT</a>
+                            <a style="color: #555; font-size: 13px;" *ngIf="!activeCat[5]" [ngClass]="{'disabled': !activeCat[5]}">SELECT</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 " (click)="setCss(6)">
+                      <div [ngClass]="{'selected-box-shadow':activeCat[6]}" class="box topic-box box-full-info divbody" id="div6" >
+                        <div class="box-header" style="text-align: center;">
+                          <div class="col-md-12">
+                              <i class="fa fa-user-o fa-4" aria-hidden="false"></i>
+                          </div>
+                          <div class="col-md-12 " style="font-size: 18px;">
+                            <h5 class="box-title" [ngClass]="{'selected-text':activeCat[6]}" style="margin-top: 5%; font-size: 17px;">Client Details</h5>
+                          </div>
+                          <div [ngClass]="{'box-footer-stepy-disable':0}">
+                            <a [routerLink]="['/client-details']"  [queryParams]="{cid:cid}" *ngIf="activeCat[6]" type="button" [ngClass]="{'disabled': !activeCat[6],'btn btn-round btn-sm selBtn':1}">SELECT</a>
+                            <a style="color: #555; font-size: 13px;" *ngIf="!activeCat[6]" [ngClass]="{'disabled': !activeCat[6]}">SELECT</a>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,12 @@
+.pointer {cursor: pointer;}
+.main-header .logo {line-height: 28px;}
+.navbar-static-top{
+    background-color: #2F4F4F !important;
+}
+.pointer{
+    background-color: #2F4F4F !important;
+}
+.logo-lg img{
+    height: 45px;
+    margin-top: 5px;
+}

@@ -1,0 +1,7 @@
+.btn-success, .btn-success:hover, .btn-success:active, .btn-success.hover{
+    background-color: #56B551;
+    border-color: #56B551;
+}
+.content-wrapper{
+    min-height: 720px;
+}

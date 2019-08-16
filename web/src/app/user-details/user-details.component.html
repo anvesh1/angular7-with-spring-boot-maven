@@ -1,0 +1,95 @@
+<div class="wrapper">
+
+  <app-header></app-header>
+
+  <app-sidebar></app-sidebar>
+
+  <div class="content-wrapper" style="min-height: 720px;">
+    <section class="content-header">
+      <h1>
+        Employee A
+        <br><small>Your Employee details</small>
+      </h1>
+      <!--<ol class="breadcrumb">
+          &lt;!&ndash;<li><a href="#"><i class="fa fa-table"></i> Dashboard</a></li>&ndash;&gt;
+          <li class="active"><i class="fa fa-table"></i>&nbsp;Dashboard</li>
+      </ol>-->
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-header">
+                <!--<h3 class="box-title">List</h3>-->
+                <div class="box-tools">
+                </div>
+              </div>
+              <div class="box-body no-padding">
+                <div class="col-md-12">
+                  <a [routerLink]="['/emp-list']" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
+                </div>
+                <div class="col-md-12" style="margin-top: 12px;">
+                  <!-- general form elements -->
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Employee View/Edit</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                      <div class="box-body body-border">
+                        <div class="col-md-12">
+                          <div class="col-md-6">
+
+                            <div class="form-group">
+                              <label for="client_name">Employee Name </label>
+                              <input type="text" class="form-control" id="client_name" placeholder="Enter Employee Name" readonly >
+                            </div>
+
+                            <div class="form-group">
+                              <label for="email_id">Email Id </label>
+                              <input type="text" class="form-control" id="email_id" placeholder="Enter Email-Id" readonly >
+                            </div>
+
+                            <div class="form-group">
+                              <label for="mobile">Mobile</label>
+                              <input type="text" class="form-control" id="mobile" placeholder="Enter Employee's Mobile NO." readonly  >
+                            </div>
+
+                            <div class="form-group">
+                              <label for="address">Address</label>
+                              <input type="text" class="form-control" id="address" placeholder="Enter Employee's Address" readonly >
+                            </div>
+
+                            <div class="form-group">
+                              <label for="">Detail</label>
+                              <input type="text" class="form-control" id="detail" placeholder="Enter Employee's" readonly >
+                            </div>
+
+                            <div class="form-group">
+                              <label for="vatno">V.A.T no.</label>
+                              <input type="text" class="form-control" id="vat_no" placeholder="Enter VAT No. (Optional)" readonly >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.box-body -->
+                      <!-- /.box-body -->
+
+                      <div class="box-footer">
+                        <button type="reset" class="btn btn-primary pull-right" style="margin-left: 5px;">Reset</button>
+                        <button type="submit" class="btn btn-success pull-right">Submit</button>
+
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+  <app-footer></app-footer>
+</div>
+

@@ -1,0 +1,66 @@
+<div class="wrapper">
+
+  <app-header></app-header>
+
+  <app-sidebar></app-sidebar>
+
+  <div class="content-wrapper" style="min-height: 720px;">
+    <section class="content-header">
+      <h1 style="display:inline;">
+        Change Password
+        <!--<br><small>You Can Change Your Existing Password...</small>-->
+      </h1>
+      
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-body table-responsive">
+                <div class="col-md-12" style="margin-bottom:10px;">
+                  &nbsp;
+                </div>
+                <div class="col-md-6">
+                  <form [formGroup]="changePasswordForm"  (ngSubmit)="changePassword()"  method="post">
+                  
+                    <div class="form-group">
+                        <input formControlName="old_password" type="password" class="form-control" placeholder="Old Password*" minlength="5">
+                        <div *ngIf="changePasswordForm.controls['old_password'].errors && !changePasswordForm.controls['old_password'].pristine">
+                          <div [hidden]="!changePasswordForm.controls['old_password'].errors.required" class="text-danger"> Old Password Required.</div>
+                          <div [hidden]="!changePasswordForm.controls['old_password'].errors.minlength" class="text-danger"> Old Password Must be at least 5 char.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input formControlName="new_password" type="password" class="form-control" placeholder="New Password*" minlength="5">
+                        <div *ngIf="changePasswordForm.controls['new_password'].errors && !changePasswordForm.controls['new_password'].pristine">
+                          <div [hidden]="!changePasswordForm.controls['new_password'].errors.required" class="text-danger"> New Password Required.</div>
+                          <div [hidden]="!changePasswordForm.controls['new_password'].errors.minlength" class="text-danger">New Password Must be at least 5 char.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="confirm_new_password"  type="password" class="form-control" placeholder="Confirm New Password*" minlength="5">
+                        <div *ngIf="changePasswordForm.controls['confirm_new_password'].errors && !changePasswordForm.controls['confirm_new_password'].pristine">
+                          <div [hidden]="!changePasswordForm.controls['confirm_new_password'].errors.required" class="text-danger"> Confirm New Password Required.</div>
+                          <div [hidden]="!changePasswordForm.controls['confirm_new_password'].errors.minlength" class="text-danger">Confirm New Password Must be at least 5 char.</div>
+                        </div>
+                    </div>   
+                   
+                    <div class="form-group">
+                        <button class="btn btn-success" [disabled]="!changePasswordForm.valid">Change Password
+                          <i class="fa fa-spinner fa-1x" *ngIf="spinLoader"></i></button>
+                    </div>
+
+                  </form>
+                  <div class="col-md-12">
+                   <footer style="font:status-bar;">**Please ensure your password has a minimum of 5 characters.</footer>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+  <app-footer></app-footer>
+</div>

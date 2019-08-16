@@ -1,0 +1,9 @@
+.login-box, .register-box {
+    margin: 10% auto;
+    width:400px;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary.hover {
+    background-color: #56B551;
+    border-color: #56B551;
+}
